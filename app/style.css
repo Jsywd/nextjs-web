@@ -1,0 +1,147 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+  background: linear-gradient(to bottom right, #ffb74d, #ffcc80);
+}
+
+.header-text {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.header-img {
+  flex: 1;
+  object-fit: contain;
+  max-height: 300px;
+}
+
+/* ส่วนสินค้า */
+.container {
+  padding: 40px;
+  background: linear-gradient(to bottom right, #fdf6e3, #ffe0b2);
+  min-height: 100vh;
+  font-family: sans-serif;
+}
+
+.page-title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 32px;
+  color: #5D4037;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 24px;
+}
+
+.product-card {
+  background-color: #fff8e1;
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.product-img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.product-name {
+  color: #6D4C41;
+  font-size: 18px;
+}
+
+.product-desc {
+  font-size: 14px;
+  color: #795548;
+  height: 48px;
+  overflow: hidden;
+}
+
+.product-price {
+  font-weight: bold;
+  color: #e64a19;
+  margin: 8px 0;
+}
+
+/* ปุ่มทั่วไป */
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn-primary {
+  background-color: #2b96cf;
+  color: white;
+  margin-right: 10px;
+}
+
+.btn-login {
+  background-color: #ff9800;
+  color: white;
+  margin: 20px;
+}
+
+.btn-success {
+  background-color: #4caf50;
+  color: white;
+}
+
+.btn-danger {
+  background-color: #f44336;
+  color: white;
+  margin-top: 30px;
+}
+
+.btn-warning {
+  background-color: #ff9800;
+  color: white;
+  margin-top: 30px;
+}
+
+.text-right {
+  text-align: right;
+  margin-bottom: 30px;
+  margin-right: 10px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.login-box {
+  background-color: #fff8e1;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  max-width: 400px;
+  width: 100%;
+}
+
+.login-input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+
+

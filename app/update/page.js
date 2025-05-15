@@ -24,6 +24,7 @@ export default function UpdateProductPage() {
     image_url: '',
     price: '',
     category: '',
+    shop_link: ''
   })
 
   const [error, setError] = useState(null)
@@ -75,7 +76,7 @@ export default function UpdateProductPage() {
       if (!res.ok) throw new Error('ไม่สามารถอัปเดตสินค้าได้')
 
         alert('อัปเดตสินค้าสำเร็จ')
-        router.push('/') // กลับหน้าหลักหลังอัปเดตสำเร็จ        
+        router.push('/admin') // กลับหน้าหลักหลังอัปเดตสำเร็จ        
     } catch (err) {
       setError(err.message)
     }
@@ -91,9 +92,6 @@ export default function UpdateProductPage() {
       color="primary">🛒 อัปเดตสินค้า</Typography>
       <form onSubmit={handleSubmit}>
         <Stack spacing={2}>
-        <Button variant="outlined" color="secondary" onClick={() => router.push('/')}>
-        กลับหน้าหลัก
-        </Button>
           <TextField
             label="ชื่อสินค้า"
             name="name"
@@ -121,7 +119,7 @@ export default function UpdateProductPage() {
             label="ราคา"
             name="price"
             type="number"
-            inputProps={{ step: '0.01' }}
+            inputProps={{ step: '1' }}
             value={formData.price}
             onChange={handleChange}
             required
@@ -138,11 +136,20 @@ export default function UpdateProductPage() {
               <MenuItem key={cat} value={cat}>{cat}</MenuItem>
             ))}
           </TextField>
-
+          <TextField
+            label="ลิงก์สินค้า"
+            name="shop_link" // ใช้ชื่อฟิลด์ตามฐานข้อมูล
+            value={formData.shop_link?? ""}
+            onChange={handleChange}
+            required
+            />
           {error && <Typography color="error">{error}</Typography>}
 
           <Button variant="contained" color="primary" type="submit">
             อัปเดตสินค้า
+          </Button>
+          <Button variant="outlined" color="secondary" onClick={() => router.push('/admin')}>
+            กลับหน้าหลัก
           </Button>
         </Stack>
       </form>

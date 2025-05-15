@@ -22,17 +22,14 @@ export default function CreateProductPage() {
     image_url: '',
     price: '',
     category: '',
-    product_url: '', // เพิ่มฟิลด์สำหรับลิ้งสินค้า
+    shop_link: '', 
   })
 
   const [error, setError] = useState(null)
 
   const handleChange = (e) => {
     const { name, value } = e.target
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }))
+    setFormData((prev) => ({...prev,[name]: value}))
   }
 
   const handleSubmit = async (e) => {
@@ -52,7 +49,7 @@ export default function CreateProductPage() {
 
       const data = await res.json() // ดึงข้อมูลจาก response
       alert('เพิ่มสินค้าสำเร็จ') // แสดงข้อความแจ้งเตือนเมื่อเพิ่มสินค้าสำเร็จ
-      router.push('/') // ไปยังหน้า product หลังจากเพิ่มสินค้าเสร็จ
+      router.push('/admin') // ไปยังหน้า product หลังจากเพิ่มสินค้าเสร็จ
 
     } catch (err) {
       setError(err.message) // ถ้ามี error ให้แสดงข้อความ error
@@ -62,9 +59,6 @@ export default function CreateProductPage() {
   return (
     <Box maxWidth={600} mx="auto" mt={5} px={2}>
       <Typography variant="h4" mb={3} color="primary">🛒 เพิ่มสินค้าใหม่</Typography>
-      <Button variant="outlined" color="secondary" onClick={() => router.push('/')}>
-        กลับหน้าหลัก
-      </Button>
       <form onSubmit={handleSubmit}>
         <Stack spacing={2}>
           <TextField
@@ -94,7 +88,7 @@ export default function CreateProductPage() {
             label="ราคา"
             name="price"
             type="number"
-            inputProps={{ step: '0.01' }}
+            inputProps={{ step: '1' }}
             value={formData.price}
             onChange={handleChange}
             required
@@ -111,11 +105,22 @@ export default function CreateProductPage() {
               <MenuItem key={cat} value={cat}>{cat}</MenuItem>
             ))}
           </TextField>
+
+          <TextField
+            label="ลิงก์สินค้า"
+            name="shop_link" 
+            value={formData.shop_link}
+            onChange={handleChange}
+            required
+          />
           
           {error && <Typography color="error">{error}</Typography>}
 
           <Button variant="contained" color="success" type="submit">
             บันทึกสินค้า
+          </Button>
+          <Button variant="outlined" color="secondary" onClick={() => router.push('/admin')}>
+            กลับหน้าหลัก
           </Button>
         </Stack>
       </form>
